@@ -70,11 +70,11 @@ Each dimension has a name; the meaning of the fields of a single dimension are:
 | point  | logical; whether cells refer to points, or intervals |
 | values | the sequence of values for this dimension (e.g., geometries), if irregular |
 
-This means that for an index i (starting at $i=1$) along a certain dimension, the corresponding dimension value (coordinate, time) is $\mbox{offset} + (i-1) \times \mbox{delta}$. This value then refers to the start (edge) of the cell or interval; in order to get the interval middle or cell centre, one needs to add half a delta. 
+This means that for an index $i$ (starting at $i=1$) along a certain dimension, the corresponding dimension value (coordinate, time) is $\mbox{offset} + (i-1) \times \mbox{delta}$. This value then refers to the start (edge) of the cell or interval; in order to get the interval middle or cell centre, one needs to add half a delta. 
 
 Dimension `band` is a simple sequence from 1 to 6. Since bands refer to colors, one could put their wavelength values in the `values` field.
 
-For this particular dataset (and most other raster datasets), we see that offset for dimension `y` is negative: this means that consecutive array values have decreasing $y$ values: cell indexes increase from top to bottom, in the direction opposite to the $y$ axis.
+For this particular dataset (and most other raster datasets), we see that delta for dimension `y` is negative: this means that consecutive array values have decreasing $y$ values: cell indexes increase from top to bottom, in the direction opposite to the $y$ axis.
 
 `read_stars` reads all bands from a raster dataset, or optionally a subset of raster datasets, into a single `stars` array structure. While doing so, raster values (often UINT8 or UINT16) are converted to double (numeric) values, and scaled back to their original values if needed if the file encodes the scaling parameters.
 
